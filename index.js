@@ -7,12 +7,9 @@ const handlebars = require('express-handlebars')
 app.engine('handlebars', handlebars.engine({defaultLayout: 'main'}))
 app.set('view engine', 'handlebars')
 
-//conexão com o bando de dados
-const Sequelize = require('sequelize')
-const sequelize = new Sequelize('teste', 'root', '', {
-    host: 'localhost',
-    dialect: 'mysql'
-})
+    // processar os dados de form HTML através de requisição post
+app.use(express.urlencoded({extended: false}))
+app.use(express.json())
 
 // rotas
 app.get('/cad', function(req, res){
@@ -20,7 +17,7 @@ app.get('/cad', function(req, res){
 })
 
 app.post('/add', function(req, res){ //não tem como acessar rotas com o post pela URL
-    res.send("Form recebido")
+    res.send("Texto: " + req.body.titulo + " Conteudo: " + req.body.conteudo) //pegar os dados enviados pelo campo titulo e depois conteudo
 })
 
 app.get("/", function(req,res){
