@@ -5,6 +5,8 @@ const sequelize = new Sequelize('postapp', 'root', '', {
     dialect: 'mysql'
 })
 
+console.log("foi")
+
 //exportar
 module.exports = {
     Sequelize: Sequelize,
