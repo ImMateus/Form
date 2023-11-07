@@ -1,8 +1,9 @@
 //conexão com o bando de dados
 const Sequelize = require('sequelize')
-const sequelize = new Sequelize('postapp', 'root', '', {
+const sequelize = new Sequelize('postapp', 'root', '7410852', {
     host: 'localhost',
-    dialect: 'mysql'
+    dialect: 'mysql',
+    query:{raw:true}
 })
 
 console.log("foi")

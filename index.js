@@ -18,7 +18,7 @@ app.get('/cad', function(req, res){
 })
 
 //Cadastrar as informações do hmtl ao db
-app.post('/add', function(req, res){ 
+app.post('/add', function(req, res){
     Post.create({
         titulo: req.body.titulo,
         conteudo: req.body.conteudo
@@ -30,8 +30,21 @@ app.post('/add', function(req, res){
 })
 
 app.get("/", function(req,res){
-    res.render('./layouts/home')
+    Post.findAll().then(function(posts){ // retorna todos os post   
+        res.render('./layouts/home', {posts: posts}) //através das chaves posso passar todo tipo de dado para o front
+    })
 })
+
+
+
+
+
+
+
+// dadadbmkz
+
+
+
 
 app.listen(8081, function(){
     console.log("Servido etá rodando na porta: https://LocalHost:8081")
