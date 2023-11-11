@@ -2,6 +2,7 @@ const express = require("express")
 const app = express()
 const handlebars = require('express-handlebars')
 const Post = require('./models/Post.js') // receber o model post
+const { where } = require("sequelize")
 
 //config
     // template engine para o handlebars
@@ -35,16 +36,10 @@ app.get("/", function(req,res){
     })
 })
 
-
-
-
-
-
-
-// dadadbmkz
-
-
-
+// deletar um post
+app.get('/deletar/:id', function(req, res){
+    Post.destroy({where:{'id': req.params.id}})
+})
 
 app.listen(8081, function(){
     console.log("Servido etá rodando na porta: https://LocalHost:8081")
